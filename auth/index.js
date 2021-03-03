@@ -18,18 +18,17 @@ const check = {
     console.log(decoded);
     //comprobar si es o no propio el token
     if(decoded.id!==owner){
-      //throw new Error ('No puedes editar ');
-      throw error('No puedes editar ',401);
+      throw error('No puedes editar',401);
     }
   }
 }
 ///////
 function getToken(auth){
   if (!auth){
-    throw new Error('No viene token');
+    throw error('No viene token',401);
   }
   if(auth.indexOf('Bearer')===-1){//no encuentre el bearer en el token
-    throw new Error('Formato Invalido')
+    throw error('Formato invalido',401);
   }
   let token = auth.replace('Bearer ','');
   return token
