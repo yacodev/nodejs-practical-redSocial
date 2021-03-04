@@ -11,7 +11,7 @@ router.post('/login', (req,res)=>{
       response.success(req,res,token,200);
     })
     .catch(e=>{
-      response.error(req,res,'information invalided',400);
+      response.error(req,res,'informationn invalided',400);
     })
 })
 module.exports = router;

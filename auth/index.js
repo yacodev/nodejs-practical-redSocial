@@ -20,6 +20,9 @@ const check = {
     if(decoded.id!==owner){
       throw error('No puedes editar',401);
     }
+  },
+  logged: function(req,owner){
+    const decoded = decodeHeader(req);//decodificar el token
   }
 }
 ///////

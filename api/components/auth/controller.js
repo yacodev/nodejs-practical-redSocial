@@ -10,13 +10,15 @@ module.exports = function(injectedStore){
 ////////////
   async function login(username,password){
     const data = await store.query(TABLA, {username:username});
+    console.log(data);
     return bcrypt.compare(password,data.password)
       .then( sonIguales=>{
+        console.log('resultado de la comparacion',sonIguales);
         if (sonIguales===true){
           //generar el token
           return auth.sign(data);
         }else{
-          throw new Error ('Information Invalida');
+          throw new Error ('Informationnn Invalida');
         }
       })
   }
