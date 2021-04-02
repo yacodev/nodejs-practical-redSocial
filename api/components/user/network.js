@@ -1,15 +1,15 @@
 const express = require('express');
 
-const secure = require('./secure');
+const secure = require('./secure');//traendo el middleware de verificacion
 const response = require('../../../network/response');
 const controller = require('./index');
 
-const router = express.Router();
+const router = express.Router();//creando el router de express
 
 //Routes
-router.get('/',list);
-router.post('/follow/:id',secure('follow'),follow)
-router.get('/:id/following',following)
+router.get('/',list);//listar los usarios
+router.post('/follow/:id',secure('follow'),follow)//seguir id
+router.get('/:id/following',following)// listar seguidores
 router.get('/:id',get);
 router.post('/',upsert);
 router.put('/',secure('update'),upsert);
@@ -19,7 +19,7 @@ function list(req,res,next){
     .then((lista)=>{
       response.success(req,res,lista,200);
     })
-    .catch(next);
+    .catch(next);//para usar el middleware de error
 }
 
 function get(req,res,next){
@@ -37,7 +37,7 @@ function upsert(req,res,next){
     .catch(next);
 }
 function follow(req,res,next){
-  controller.follow(req.user.id, req.params.id)
+  controller.follow(req.user.id, req.params.id)//user_from - user_to
     .then((data)=>{
       response.success(req,res,data,201);
     })

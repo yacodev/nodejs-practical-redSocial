@@ -10,6 +10,7 @@ const dbconfig = {
 }
 //Conexion
 let connection;
+//gestionar la conexion
 function handleCon(){
   connection = mysql.createConnection(dbconfig);
   connection.connect((err)=>{
@@ -20,7 +21,7 @@ function handleCon(){
       console.log('Db connected');
     }
   })
-///////
+/////////////////////////////////////////////////
   connection.on('error',err=>{
     console.log('[db err]',err);
     if(err.code==='PROTOCOL_CONNECTION_LOST'){
@@ -31,7 +32,7 @@ function handleCon(){
   })
 }
 handleCon();
-///////funcion listar
+/////////////////////////////////////////////////
 function list(table){
   return new Promise ((resolve,reject)=>{
     connection.query(`SELECT * FROM ${table}`,(err,data)=>{
@@ -40,7 +41,7 @@ function list(table){
     })
   })
   }
-  ///////funcion get
+  /////////////////////////////////////////////////
 function get(table,id){
   return new Promise ((resolve,reject)=>{
     connection.query(`SELECT * FROM ${table} WHERE id='${id}'`,(err,data)=>{
@@ -49,7 +50,7 @@ function get(table,id){
     })
   })
   }
-  ///////funcion insert
+  ////////////////////////////////////////////////
 function insert(table,data){
   return new Promise ((resolve,reject)=>{
     connection.query(`INSERT INTO ${table} SET ?`,data,(err,result)=>{
@@ -58,7 +59,7 @@ function insert(table,data){
     })
   })
   }
-  ///////funcion insert
+  /////////////////////////////////////////////////
 function update(table,data){
   return new Promise ((resolve,reject)=>{
     connection.query(`UPDATE ${table} SET ? WHERE ID=?`,[data,data.id],(err,result)=>{
@@ -67,16 +68,17 @@ function update(table,data){
     })
   })
   }
-  ///////funcion upsert
+  /////////////////////////////////////////////////
 function upsert(table,data) {
-  //return insert(table,data);
+  //return insert o update
  if (data && data.id){
     return update(table,data);
   }else{
     return insert(table,data);
   }
 }
-///////
+/////////////////////////////////////////////////
+ //{user_follow,user_from:user,user:user_to}
 function query(table,q,join){
   let joinQuery = '';
   if(join){

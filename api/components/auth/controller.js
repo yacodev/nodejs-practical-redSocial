@@ -1,5 +1,5 @@
-const bcrypt = require('bcrypt');
-const auth = require('../../../auth');
+const bcrypt = require('bcrypt');//cifrado decontraseñas
+const auth = require('../../../auth');//trameos el archivo que gestiona JWT
 const TABLA = 'auth'; 
 
 module.exports = function(injectedStore){
@@ -7,7 +7,7 @@ module.exports = function(injectedStore){
   if(!store){
     store = require('../../../store/dummy');
   }
-////////////
+//////////////////////////////////////////////////////
   async function login(username,password){
     const data = await store.query(TABLA, {username:username});
     console.log(data);
@@ -18,11 +18,11 @@ module.exports = function(injectedStore){
           //generar el token
           return auth.sign(data);
         }else{
-          throw new Error ('Informationnn Invalida');
+          throw new Error ('Information Invalida');
         }
       })
   }
-////////////registro - actualizacion de usuaior
+////////////registro - actualizacion de usuario
   async function upsert(data){
     const authData  = {
       id: data.id

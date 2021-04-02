@@ -1,4 +1,4 @@
 //const store = require('../../../store/mysql');
 const store = require('../../../store/remote-mysql');
 const ctrl = require('./controller');
-module.exports = ctrl(store);
+module.exports = ctrl(store);//inyectando la base de datos

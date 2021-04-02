@@ -25,12 +25,12 @@ const check = {
     const decoded = decodeHeader(req);//decodificar el token
   }
 }
-///////
+///////Extra el Bearer del token, para devolver solo el token
 function getToken(auth){
   if (!auth){
     throw error('No viene token',401);
   }
-  if(auth.indexOf('Bearer')===-1){//no encuentre el bearer en el token
+  if(auth.indexOf('Bearer ')===-1){//no encuentre el bearer en el token retorna -1
     throw error('Formato invalido',401);
   }
   let token = auth.replace('Bearer ','');

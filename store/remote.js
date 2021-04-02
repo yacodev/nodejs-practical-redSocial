@@ -1,4 +1,4 @@
-const request = require('request');
+const request = require('request');//permite hacer perticiones http
 
 function createRemoteDB(host,port){
   const URL = 'http://'+host+':'+port;
@@ -27,7 +27,7 @@ function createRemoteDB(host,port){
           return reject(err.message);
         }
         const resp = JSON.parse(body);
-        return resolve(resp.body)
+        return resolve(resp.body);
       })
     })
   }

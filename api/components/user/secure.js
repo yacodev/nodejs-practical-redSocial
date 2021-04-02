@@ -1,5 +1,5 @@
 const auth = require('../../../auth');
-
+//control de permisos
 //generar middleware
 module.exports = function checkAuth(action){
   function middelware(req,res,next){
