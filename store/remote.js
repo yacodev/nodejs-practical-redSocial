@@ -2,17 +2,19 @@ const request = require('request');//permite hacer perticiones http
 
 function createRemoteDB(host,port){
   const URL = 'http://'+host+':'+port;
+  //funcion listar(table)
   function list(table){
     return req('GET',table);
   }
   //function get(table,id){}
-  //function upsert(table,data){}
+  function upsert(table,data){
+    return req('POST',table,data);
+  }
   //function query(table,query,join)
 
   function req(method,table,data){
     let url = URL +'/'+table;
-    let body='';
-
+    let body='';//body
     return new Promise((resolve,reject)=>{
       request({
         method,
@@ -33,6 +35,7 @@ function createRemoteDB(host,port){
   }
   return{
     list,
+    upsert,
   }
 }
 module.exports=createRemoteDB;

@@ -11,8 +11,8 @@ router.get('/',list);//listar los usarios
 router.post('/follow/:id',secure('follow'),follow)//seguir id
 router.get('/:id/following',following)// listar seguidores
 router.get('/:id',get);
-router.post('/',upsert);
-router.put('/',secure('update'),upsert);
+router.post('/',upsert);//insertar usario
+router.put('/',secure('update'),upsert);//
 
 function list(req,res,next){
   controller.list()

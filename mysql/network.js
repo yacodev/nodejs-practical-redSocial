@@ -5,13 +5,13 @@ const store = require('../store/mysql');
 
 const router = express.Router();
 
-router.get('/:table',list);
-router.get('/:table/:id',get);
+router.get('/:table',list);//
+router.get('/:table/:id',get);//
 router.post('/:table',insert);
-router.put('/:table',upsert);
+router.put('/:table',upsert);//
 
 async function list(req,res,next){
-  const datos =  await store.list(req.params.table)
+  const datos =  await store.list(req.params.table);
   response.success(req,res,datos,200);
 }
 async function get(req,res,next){

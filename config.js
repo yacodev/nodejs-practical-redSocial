@@ -5,6 +5,9 @@ module.exports = {
   jwt:{
     secret : process.env.JWT_SECRET ||'notesecret',
   },
+  post:{
+    port: process.env.POST_PORT || 3002,
+  },
   mysql:{
     host: process.env.MYSQL_HOST||'remotemysql.com',
     user: process.env.MYSQL_USER||'sSMJ7EQyRn',

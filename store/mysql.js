@@ -68,16 +68,17 @@ function update(table,data){
     })
   })
   }
-  /////////////////////////////////////////////////
+  ///////funcion upsert
 function upsert(table,data) {
   //return insert o update
- if (data && data.id){
+  //return insert(table,data);
+  if (data && data.id){
     return update(table,data);
   }else{
     return insert(table,data);
-  }
+  } 
 }
-/////////////////////////////////////////////////
+///////
  //{user_follow,user_from:user,user:user_to}
 function query(table,q,join){
   let joinQuery = '';
@@ -105,5 +106,6 @@ function query(table,q,join){
     list,
     get,
     upsert,
+    insert,
     query,
   }
