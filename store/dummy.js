@@ -31,7 +31,7 @@ async function remove(table,id){
 ////////////////////////////////////////////////
 async function query (tabla,q){
   let col = await list(tabla);
-  let keys = Object.keys(q);//retorna un array de los keys del objecto
+  let keys = Object.keys(q);//retorna un array de los keys del objeto----> user_from
   let key = keys[0];
   return col.filter(item=>item[key]===q[key])[0]||null;
 }
